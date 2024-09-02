@@ -70,6 +70,9 @@ useEffect(()=>{
              setCartTotalQty(qty)
              setCartTotalAmount(total)
 
+             localStorage.setItem('eShopCartTotalAmount' , JSON.stringify(total))
+             localStorage.setItem('eShopCartTotalQty' , JSON.stringify(qty))
+
         }
 
     

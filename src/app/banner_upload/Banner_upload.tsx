@@ -19,7 +19,7 @@ const Banner = () => {
         formDataToSend.append('banner_picture' , profileImageFile ?? '');
 
         try{
-       const response = await axios.post('http://127.0.0.1:8000/api/dashboard/banner_picture_upload' , formDataToSend)
+       const response = await axios.post('https://laravel.valueadderhabib.com/api/dashboard/banner_picture_upload' , formDataToSend)
             console.log('Success:', response.data);
 
             toast.success('Banner Is Uploaded');

@@ -58,7 +58,7 @@ const LoginForm: React.FC<any> = ({currentUser}) => {
         //     }
         // } );
         setIsLoading(true)
-        await fetch('http://127.0.0.1:8000/api/login' , {
+        await fetch('https://laravel.valueadderhabib.com/api/login' , {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -113,7 +113,7 @@ const LoginForm: React.FC<any> = ({currentUser}) => {
         outline
         label="Continue with Github"
         icon={AiOutlineGoogle} 
-        onClick={()=>window.location.href='http://127.0.0.1:8000/auth/redirect'}
+        onClick={()=>window.location.href='https://laravel.valueadderhabib.com/auth/redirect'}
         />
 
         <hr className="bg-slate-300 w-full h-px" />

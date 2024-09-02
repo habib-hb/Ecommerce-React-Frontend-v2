@@ -18,7 +18,7 @@ const Customers = () => {
 
     //Extracting the customer data from laravel backend
     async function fetchCustomers() {
-       await axios.get('http://127.0.0.1:8000/api/customers?email='+( typeof window !== 'undefined' ? window?.localStorage.getItem('loggedInEmail') : ''))
+       await axios.get('https://laravel.valueadderhabib.com/api/customers?email='+( typeof window !== 'undefined' ? window?.localStorage.getItem('loggedInEmail') : ''))
         .then((response) => {
 
             console.log(response.data);
@@ -46,7 +46,7 @@ const Customers = () => {
 
 
     async function deleteCustomer(customer_id : any) {
-        const response = await fetch(`http://127.0.0.1:8000/api/dashboard/customer_delete/${customer_id}`);
+        const response = await fetch(`https://laravel.valueadderhabib.com/api/dashboard/customer_delete/${customer_id}`);
         if(response.ok){
             alert('Customer Deleted');
             setDialogBoxOpen(false);

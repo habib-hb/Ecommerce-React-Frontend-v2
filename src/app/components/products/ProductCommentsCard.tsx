@@ -26,7 +26,7 @@ const ProductCommentsCard:React.FC<any> = ({data}) => {
 
                 // Comment Deletion Functionality
     const commentDeleteFunction = async (comment_id : any) => {
-        const response = await fetch(`http://127.0.0.1:8000/api/dashboard/comment_delete/${comment_id}?email=${ typeof window !== 'undefined' ? window?.localStorage.getItem('loggedInEmail') : ''}`);
+        const response = await fetch(`https://laravel.valueadderhabib.com/api/dashboard/comment_delete/${comment_id}?email=${ typeof window !== 'undefined' ? window?.localStorage.getItem('loggedInEmail') : ''}`);
 
             if(response.ok){
 

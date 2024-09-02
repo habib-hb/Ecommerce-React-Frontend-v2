@@ -9,7 +9,7 @@ const HomeBanner = () => {
 
     const handleImageLoad = async() => {
 
-        const response = await fetch('http://127.0.0.1:8000/api/dashboard/get_banner_picture');
+        const response = await fetch('https://laravel.valueadderhabib.com/api/dashboard/get_banner_picture');
 
         if(response.ok) {
 

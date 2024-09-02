@@ -13,7 +13,7 @@ const GithubLogin = () => {
 
     const fetchGithubInfo = async () => {
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/get_github_info', { laravel_id: laravel_id },
+            const response = await axios.post('https://laravel.valueadderhabib.com/api/get_github_info', { laravel_id: laravel_id },
             { withCredentials: true });
 
             console.log('Success');

@@ -18,7 +18,7 @@ const Profile_picture = () => {
         formDataToSend.append('profile_picture' , profileImageFile ?? '');
 
 
-        axios.post('http://127.0.0.1:8000/api/dashboard/profile_picture_upload' , formDataToSend)
+        axios.post('https://laravel.valueadderhabib.com/api/dashboard/profile_picture_upload' , formDataToSend)
         .then((response) => {
             console.log('Success:', response.data);
 

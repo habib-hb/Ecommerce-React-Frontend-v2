@@ -23,7 +23,7 @@ const Orders = () => {
 
     async function fetchAllOrdersData() {
 
-        const response = await fetch(`http://127.0.0.1:8000/api/dashboard/all_orders_data?email=${ typeof window !== 'undefined' ? window?.localStorage.getItem('loggedInEmail') : ''}`);
+        const response = await fetch(`https://laravel.valueadderhabib.com/api/dashboard/all_orders_data?email=${ typeof window !== 'undefined' ? window?.localStorage.getItem('loggedInEmail') : ''}`);
 
         if(response.ok) {
 
@@ -76,7 +76,7 @@ const Orders = () => {
 
             if(updated_order_details.length > 0) {
                 // Post request to deliver product
-                const response = await fetch('http://127.0.0.1:8000/api/dashboard/order_delivered' , {
+                const response = await fetch('https://laravel.valueadderhabib.com/api/dashboard/order_delivered' , {
                     method : 'POST',
                     headers : {
                         'Content-Type' : 'application/json'
@@ -100,7 +100,7 @@ const Orders = () => {
             }else{ // The data that is stored in the database is a string version of a big json array object, so when there is no order data in that json array, I'm attemting to delete the record from the database completely
 
                     // Post request to deliver product
-                    const response = await fetch('http://127.0.0.1:8000/api/dashboard/delete_order' , {
+                    const response = await fetch('https://laravel.valueadderhabib.com/api/dashboard/delete_order' , {
 
                         method : 'POST',
 
@@ -146,7 +146,7 @@ const Orders = () => {
 
             if(updated_order_details.length > 0) {
                 // Post request to deliver product
-                const response = await fetch('http://127.0.0.1:8000/api/dashboard/order_delivered' , {
+                const response = await fetch('https://laravel.valueadderhabib.com/api/dashboard/order_delivered' , {
                     method : 'POST',
                     headers : {
                         'Content-Type' : 'application/json'
@@ -169,7 +169,7 @@ const Orders = () => {
             }else{// The data that is stored in the database is a string version of a big json array object, so when there is no order data in that json array, I'm attemting to delete the record from the database completely
 
                     // Post request to deliver product
-                    const response = await fetch('http://127.0.0.1:8000/api/dashboard/delete_order' , {
+                    const response = await fetch('https://laravel.valueadderhabib.com/api/dashboard/delete_order' , {
 
                         method : 'POST',
 
@@ -202,7 +202,7 @@ const Orders = () => {
 
     if(orders?.length > 0) {
 
-                // [{"id":1,"name":"iphone 14","description":"Short description","category":"Phone","brand":"apple","selectedImg":{"image":"https://m.media-amazon.com/images/I/71p-tHQ0u1L._AC_SX679_.jpg","color":"White","colorCode":"#FFFFFF"},"quantity":2,"price":"2999.00"},{"id":26,"name":"really!","description":"fdsf","category":"trt","brand":"dsfd","selectedImg":{"image":"http://127.0.0.1:8000/storage/images/rokia afzal.jpeg","color":"rokia afzal","colorCode":"#ff2245"},"quantity":2,"price":"454.00"}]
+                // [{"id":1,"name":"iphone 14","description":"Short description","category":"Phone","brand":"apple","selectedImg":{"image":"https://m.media-amazon.com/images/I/71p-tHQ0u1L._AC_SX679_.jpg","color":"White","colorCode":"#FFFFFF"},"quantity":2,"price":"2999.00"},{"id":26,"name":"really!","description":"fdsf","category":"trt","brand":"dsfd","selectedImg":{"image":"https://laravel.valueadderhabib.com/storage/images/rokia afzal.jpeg","color":"rokia afzal","colorCode":"#ff2245"},"quantity":2,"price":"454.00"}]
 
         return ( 
 
@@ -225,7 +225,7 @@ const Orders = () => {
 
                                         <div className="my-4">
 
-                                                <img src={order.customer_avatar ? order.customer_avatar : 'http://127.0.0.1:8000/storage/images/unknown_user.jpg'} alt="USER" className="h-[200px] mx-auto rounded-lg border border-black" />
+                                                <img src={order.customer_avatar ? order.customer_avatar : 'https://laravel.valueadderhabib.com/storage/images/unknown_user.jpg'} alt="USER" className="h-[200px] mx-auto rounded-lg border border-black" />
                        
 
                                                 <h1 className="text-lg">Customer: <span className="text-base md:text-2xl font-bold">{order.name}</span></h1>

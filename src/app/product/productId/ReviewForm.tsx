@@ -71,7 +71,7 @@ const ReviewForm:React.FC<ReviewFormProps>  = ({product }) => {
     formDataToSend.append('review_image', reviewImageFile ?? '');
 
     // Sending Ajax Post request
-    fetch('http://127.0.0.1:8000/api/dashboard/review-upload', {
+    fetch('https://laravel.valueadderhabib.com/api/dashboard/review-upload', {
         method: 'POST',
         body: formDataToSend,
     })
@@ -106,7 +106,7 @@ const ReviewForm:React.FC<ReviewFormProps>  = ({product }) => {
             async function loadUser(){
                 if(currentUserEmail){
 
-                const theRequest = await axios.post('http://127.0.0.1:8000/api/user_data_retrive' , {
+                const theRequest = await axios.post('https://laravel.valueadderhabib.com/api/user_data_retrive' , {
                     email: currentUserEmail
                 })
 

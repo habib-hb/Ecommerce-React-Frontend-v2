@@ -59,7 +59,7 @@ const Product =  () => { //{params}:{params:IPrams}
 
     // Doing another method
     try{
-        let someApiData = await fetch('http://127.0.0.1:8000/api/products');
+        let someApiData = await fetch('https://laravel.valueadderhabib.com/api/products');
 
         if(!someApiData.ok){
         throw new Error('something went wrong regarding the network request.');

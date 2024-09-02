@@ -21,7 +21,7 @@ const Add_admin = () => {
     //Extracting the Admins data from laravel backend
     async function fetchPotentialAdmins() {
 
-        await axios.get('http://127.0.0.1:8000/api/add_admin_get_customers?email='+(typeof window !== 'undefined' ? window?.localStorage.getItem('loggedInEmail') : ''))
+        await axios.get('https://laravel.valueadderhabib.com/api/add_admin_get_customers?email='+(typeof window !== 'undefined' ? window?.localStorage.getItem('loggedInEmail') : ''))
          .then((response) => {
  
              console.log(response.data);
@@ -53,7 +53,7 @@ const Add_admin = () => {
 
     async function addAdmin(customer_id : any) {
 
-        const response = await fetch(`http://127.0.0.1:8000/api/dashboard/add_admin_insert_customer` , {
+        const response = await fetch(`https://laravel.valueadderhabib.com/api/dashboard/add_admin_insert_customer` , {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

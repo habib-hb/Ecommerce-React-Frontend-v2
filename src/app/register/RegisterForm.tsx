@@ -71,7 +71,7 @@ const RegisterForm: React.FC<any> = ({currentUser}) => {
     const onSubmit:SubmitHandler<FieldValues> = (data)=>{
         setIsLoading(true)
        
-        axios.post('http://127.0.0.1:8000/auth/user/create' , data, {
+        axios.post('https://laravel.valueadderhabib.com/auth/user/create' , data, {
             withCredentials: true
         }).then(()=>{
 
@@ -107,7 +107,7 @@ const RegisterForm: React.FC<any> = ({currentUser}) => {
         outline
         label="Continue with Github"
         icon={AiOutlineGoogle} 
-        onClick={()=>window.location.href='http://127.0.0.1:8000/auth/redirect'}
+        onClick={()=>window.location.href='https://laravel.valueadderhabib.com/auth/redirect'}
         />
 
         <hr className="bg-slate-300 w-full h-px" />

@@ -7,6 +7,12 @@ import { useEffect, useState } from "react";
 const Order_placement = () => {
     const [order_placed , setOrder_placed] = useState(false);
 
+    const [paymentOption , setPaymentOption] = useState('');
+
+    const [address_phone , setAddress_phone] = useState({
+                                                        address : '',
+                                                        phone : ''});
+
     // Get Items from LocalStorage as a string
     let ordered_products =   typeof window !== 'undefined' ? window?.localStorage.getItem('eShopCartItems') as string : '';
 
@@ -14,10 +20,11 @@ const Order_placement = () => {
 
 
 
+
     // Order Placement Function
     async function placeOrder() {
 
-            let response = await fetch('http://127.0.0.1:8000/api/dashboard/all_orders_data_for_order_placement_by_users')
+            let response = await fetch('https://laravel.valueadderhabib.com/api/dashboard/all_orders_data_for_order_placement_by_users')
 
         if(response.ok) {
 
@@ -85,10 +92,14 @@ const Order_placement = () => {
                     // Placing the updated Order
                     let order_details = {
                         ordered_products : JSON.stringify(updatedOrdersData),
-                        orderer_email : orderer_email
+                        orderer_email : orderer_email,
+                        orderer_address : address_phone.address,
+                        orderer_phone : address_phone.phone,
+                        order_payment_option : paymentOption,
+                        order_payment_status : 'Pending'
                     }
 
-                    let response = await fetch('http://127.0.0.1:8000/api/dashboard/order_placement' , {
+                    let response = await fetch('https://laravel.valueadderhabib.com/api/dashboard/order_placement' , {
                         method : 'POST',
                         headers : {
                             'Content-Type' : 'application/json'
@@ -104,7 +115,10 @@ const Order_placement = () => {
             
                         setOrder_placed(true)
 
+                       
                         window.location.href = '/'
+                        
+                        
             
                     }else {
             
@@ -120,10 +134,14 @@ const Order_placement = () => {
 
                     let order_details = {
                         ordered_products : ordered_products,
-                        orderer_email : orderer_email
+                        orderer_email : orderer_email,
+                        orderer_address : address_phone.address,
+                        orderer_phone : address_phone.phone,
+                         order_payment_option : paymentOption,
+                        order_payment_status : 'Pending'
                     }
 
-                    let response = await fetch('http://127.0.0.1:8000/api/dashboard/order_placement' , {
+                    let response = await fetch('https://laravel.valueadderhabib.com/api/dashboard/order_placement' , {
                         method : 'POST',
                         headers : {
                             'Content-Type' : 'application/json'
@@ -139,13 +157,15 @@ const Order_placement = () => {
             
                         setOrder_placed(true)
 
+
                         window.location.href = '/'
+                        
             
-                    }else {
-            
-                        alert('Something went wrong')
-            
-                    }
+            }else {
+    
+                alert('Something went wrong')
+    
+            }
 
                 }
 
@@ -155,10 +175,14 @@ const Order_placement = () => {
 
                 let order_details = {
                     ordered_products : ordered_products,
-                    orderer_email : orderer_email
+                    orderer_email : orderer_email,
+                    orderer_address : address_phone.address,
+                    orderer_phone : address_phone.phone,
+                    order_payment_option : paymentOption,
+                    order_payment_status : 'Pending'
                 }
 
-                let response = await fetch('http://127.0.0.1:8000/api/dashboard/order_placement' , {
+                let response = await fetch('https://laravel.valueadderhabib.com/api/dashboard/order_placement' , {
                     method : 'POST',
                     headers : {
                         'Content-Type' : 'application/json'
@@ -174,13 +198,15 @@ const Order_placement = () => {
         
                     setOrder_placed(true)
 
+
                     window.location.href = '/'
+                    
         
-                }else {
-        
-                    alert('Something went wrong')
-        
-                }
+        }else {
+
+            alert('Something went wrong')
+
+        }
 
             }
 
@@ -190,9 +216,37 @@ const Order_placement = () => {
 
     useEffect(() => {
 
-        !order_placed && ordered_products && placeOrder()
+              // !order_placed && ordered_products && address_phone.address && address_phone.phone && placeOrder()
+        if(!order_placed && ordered_products && address_phone.address && address_phone.phone){
+            placeOrder()
+        }
         
-    }, [])
+    }, [ order_placed , ordered_products , address_phone.address , address_phone.phone ])
+
+    const address_phone_submit = (e:any) => {
+
+        e.preventDefault();
+
+        let phone = e.target.phone.value;
+
+        let address = e.target.address.value;
+
+        if(phone && address) {
+
+            setAddress_phone((prev : any) => ({...prev , phone : phone , address : address}))
+
+            localStorage.setItem('orderer_address' , address)
+            localStorage.setItem('orderer_phone' , phone)
+
+        }else{
+
+            alert('Please Fill All The Details')
+
+        }
+
+    }
+
+
 
 
     if(order_placed) {
@@ -210,6 +264,79 @@ const Order_placement = () => {
 
                     </Container>
                 )
+
+
+
+
+
+    }else if(paymentOption == ''){
+ 
+
+        return (
+
+            <Container>
+
+            <div id='payment_option_popup' className="flex flex-col justify-center items-center">
+
+               
+
+                    {/* Delivered Dialoge Box Feature */}
+                    <div className={`mt-8 h-[50vh] w-[80vw] md:w-[50vw] border border-black bg-gray-100 rounded-lg shadow-xl flex flex-col items-center justify-center ${1==1 ? '' : 'hidden'}`}>
+                    
+                    <div className="flex flex-col justify-center items-center">
+
+                    <p className="text-blue-600 text-2xl text-center p-8">Which Payment Option Do You Prefer ?</p>
+
+                                <div className="flex gap-4">
+
+                                <button className="bg-blue-600 text-white rounded-lg px-4 py-2 w-[50%] md:w-[150px] hover:scale-110 mt-2" onClick={()=>setPaymentOption('online')}>Online Payment</button>
+
+                                <button className="bg-black text-white rounded-lg px-4 py-2 w-[50%] md:w-[150px] hover:scale-110 mt-2" onClick={()=>setPaymentOption('local')}>Pay Locally</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+
+
+        </Container>
+
+        )
+
+
+
+
+    }else if(paymentOption !=='' && (address_phone.address == '' || address_phone.phone == '')){
+
+         return (   <Container>
+                   
+            <div className="flex flex-col justify-center items-center">
+
+                  <h1 className="text-3xl text-center p-4">Delivery Details</h1>
+
+                <form onSubmit={address_phone_submit} className="flex flex-col justify-center items-center">
+
+                    <div className="flex flex-col">
+                    <label>Phone</label>
+                    <input className="px-4 py-2 border border-black w-[90vw] md:w-[60vw] my-4 rounded-lg hover:scale-105" type="phone" name="phone" />
+                    </div>
+
+                    <div className="flex flex-col">
+                    <label>Address</label>
+                    <input className="px-4 py-2 border border-black w-[90vw] md:w-[60vw] rounded-lg hover:scale-105" type="address" name="address" />
+                   
+                    </div>
+
+                    <input type="submit" className=" bg-black text-white rounded-lg px-4 py-2 w-[50%] md:w-[150px] hover:scale-110 mt-8" value="Send" />
+                   
+                </form>
+
+            </div>
+
+        </Container>
+
+         )
 
     }else{
 

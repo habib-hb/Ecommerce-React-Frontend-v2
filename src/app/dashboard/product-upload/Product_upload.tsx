@@ -61,7 +61,7 @@ const ProductUpload = () => {
         }
     
         try {
-          const response = await fetch('http://127.0.0.1:8000/api/dashboard/product-upload', {
+          const response = await fetch('https://laravel.valueadderhabib.com/api/dashboard/product-upload', {
             method: 'POST',
             body: data,
             credentials: 'include'
@@ -94,7 +94,7 @@ const ProductUpload = () => {
 
                 <CardContent className="grid gap-4">
 
-                    <form method="POST" action="http://127.0.0.1:8000/api/dashboard/product-upload" encType="multipart/form-data" onSubmit={handleSubmit}>
+                    <form method="POST" action="https://laravel.valueadderhabib.com/api/dashboard/product-upload" encType="multipart/form-data" onSubmit={handleSubmit}>
 
                     <div className="space-y-2">
                     <Label htmlFor="name">Product Name</Label>

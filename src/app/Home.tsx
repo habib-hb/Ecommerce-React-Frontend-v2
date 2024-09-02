@@ -41,7 +41,7 @@ export default  function Home() {
 
     // Doing another method
     try{
-        let someApiData = await fetch(`http://127.0.0.1:8000/api/products`);
+        let someApiData = await fetch(`https://laravel.valueadderhabib.com/api/products`);
 
         if(!someApiData.ok){
         throw new Error('something went wrong regarding the network request.');
@@ -154,7 +154,7 @@ export default  function Home() {
 
           // const handleImageLoad = async() => {
 
-            const response = await fetch('http://127.0.0.1:8000/api/dashboard/get_banner_picture');
+            const response = await fetch('https://laravel.valueadderhabib.com/api/dashboard/get_banner_picture');
     
             if(response.ok) {
     
@@ -184,7 +184,7 @@ export default  function Home() {
 
               // Checking For Admin Access For Dashboard Access 
               try{
-              await axios.post('http://127.0.0.1:8000/api/admin_varification' , {admin_email : localStorage.getItem('loggedInEmail')});    
+              await axios.post('https://laravel.valueadderhabib.com/api/admin_varification' , {admin_email : localStorage.getItem('loggedInEmail')});    
             
                  localStorage.setItem('adminAccess' , 'admin');
 
@@ -264,6 +264,8 @@ export default  function Home() {
               })}
 
             </div>
+
+          
 
           </Container>
         </div>

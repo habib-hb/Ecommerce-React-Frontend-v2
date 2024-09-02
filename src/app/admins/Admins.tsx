@@ -20,7 +20,7 @@ const Admins = () => {
 
     //Extracting the Admins data from laravel backend
     async function fetchAdmins() {
-        await axios.get('http://127.0.0.1:8000/api/admins?email='+ (typeof window !== 'undefined' ? window?.localStorage.getItem('loggedInEmail') : ''))
+        await axios.get('https://laravel.valueadderhabib.com/api/admins?email='+ (typeof window !== 'undefined' ? window?.localStorage.getItem('loggedInEmail') : ''))
          .then((response) => {
  
              console.log(response.data);
@@ -63,7 +63,7 @@ const Admins = () => {
 
 
     async function deleteAdmin(admin_id : any) {
-        const response = await fetch(`http://127.0.0.1:8000/api/dashboard/admin_delete/${admin_id}?email=${typeof window !== 'undefined' ? window?.localStorage.getItem('loggedInEmail') : ''}`);
+        const response = await fetch(`https://laravel.valueadderhabib.com/api/dashboard/admin_delete/${admin_id}?email=${typeof window !== 'undefined' ? window?.localStorage.getItem('loggedInEmail') : ''}`);
         if(response.ok){
             alert('Admin Deleted');
             setDialogBoxOpen(false);

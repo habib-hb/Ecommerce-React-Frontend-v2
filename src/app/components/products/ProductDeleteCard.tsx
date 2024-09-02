@@ -25,11 +25,11 @@ const ProductDeleteCard:React.FC<ProductCardProps> = ({data}) => {
 
     let deleteFunction = async () => {
                 // document.cookie = "user_id=10; path=/; SameSite=None";
-                // const response = await fetch(`http://127.0.0.1:8000/api/dashboard/product_delete/${data.id}`, {
+                // const response = await fetch(`https://laravel.valueadderhabib.com/api/dashboard/product_delete/${data.id}`, {
                 //     method: 'GET', // Ensure this matches your Laravel route
                 //     credentials: 'include' // Ensures cookies are sent with the request
                 // });
-        const response = await fetch(`http://127.0.0.1:8000/api/dashboard/product_delete/${data.id}?email=${ typeof window !== 'undefined' ? window?.localStorage.getItem('loggedInEmail') : ''}`);        
+        const response = await fetch(`https://laravel.valueadderhabib.com/api/dashboard/product_delete/${data.id}?email=${ typeof window !== 'undefined' ? window?.localStorage.getItem('loggedInEmail') : ''}`);        
 
         if(response.ok){
 
@@ -87,7 +87,7 @@ const ProductDeleteCard:React.FC<ProductCardProps> = ({data}) => {
             <div>{data.reviews.length} reviews</div>
             <div className="font-semibold">{formatPrice(data.price)}</div>
 
-            {/* <a href={'http://127.0.0.1:8000/api/dashboard/product_delete/' + data.id}><button className="bg-red-600 text-white py-4 px-8 rounded-lg" onClick={deleteFunction}>Delete</button></a> */}
+            {/* <a href={'https://laravel.valueadderhabib.com/api/dashboard/product_delete/' + data.id}><button className="bg-red-600 text-white py-4 px-8 rounded-lg" onClick={deleteFunction}>Delete</button></a> */}
 
            <button className="bg-red-600 text-white py-4 px-8 rounded-lg" onClick={deleteFunction}>Delete</button>
 
